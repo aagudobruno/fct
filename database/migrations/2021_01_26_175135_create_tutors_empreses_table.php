@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTutorsEmpresaTable extends Migration
+class CreateTutorsEmpresesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateTutorsEmpresaTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutors_empresa', function (Blueprint $table) {
+        Schema::create('tutors_empreses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('empresa_id');
             $table->string('name');
             $table->string('nif', 9);
+            $table->string('job');
+            $table->foreign('empresa_id')->references('id')->on('empreses');
             $table->timestamps();
         });
     }

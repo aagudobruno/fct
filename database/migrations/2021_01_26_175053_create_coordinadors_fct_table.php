@@ -15,8 +15,10 @@ class CreateCoordinadorsFctTable extends Migration
     {
         Schema::create('coordinadors_fct', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('empresa_id');
             $table->string('name');
             $table->string('nif', 9);
+            $table->foreign('empresa_id')->references('id')->on('empreses');
             $table->timestamps();
         });
     }

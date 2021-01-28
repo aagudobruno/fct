@@ -13,7 +13,7 @@ class CreateCentresDeTreballTable extends Migration
      */
     public function up()
     {
-        Schema::create('cetres_de_treball', function (Blueprint $table) {
+        Schema::create('centres_de_treball', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('empresa_id');
             $table->string('name');
@@ -26,6 +26,8 @@ class CreateCentresDeTreballTable extends Migration
             $table->unsignedInteger('tlf1');
             $table->unsignedInteger('tlf2')->nullable();
             $table->unsignedInteger('fax')->nullable();
+            $table->enum('typeOfWorkingDay', ['continued', 'partTime']);
+            $table->string('schedule');
             $table->foreign('empresa_id')->references('id')->on('empreses');
             $table->timestamps();
         });
