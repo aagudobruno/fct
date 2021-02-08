@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\email;
+use App\Http\Controllers\postForm;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,10 @@ Route::get('/holaMon', function () {
 });
 
 Route::get('/mail', [email::class, 'mail']);
+
+Route::view('/form', 'form.mainForm');
+
+Route::post('/form', [postForm::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

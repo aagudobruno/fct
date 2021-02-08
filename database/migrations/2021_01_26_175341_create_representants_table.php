@@ -17,7 +17,7 @@ class CreateRepresentantsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('empresa_id');
             $table->string('name');
-            $table->char('nif', 9);
+            $table->char('nif', 9)->unique();
             $table->timestamps();
             $table->foreign('empresa_id')->references('id')->on('empreses');
         });

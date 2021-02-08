@@ -20,7 +20,6 @@ class CreateCentresDeTreballTable extends Migration
             $table->string('direction');
             $table->string('poblation');
             $table->string('cp', 5);
-            $table->string('mainActivity');
             $table->unsignedInteger('numOfWorkers');
             $table->string('email');
             $table->unsignedInteger('tlf1');
@@ -28,6 +27,7 @@ class CreateCentresDeTreballTable extends Migration
             $table->unsignedInteger('fax')->nullable();
             $table->enum('typeOfWorkingDay', ['continued', 'partTime']);
             $table->string('schedule');
+            $table->unique('empresa_id','email');
             $table->foreign('empresa_id')->references('id')->on('empreses');
             $table->timestamps();
         });

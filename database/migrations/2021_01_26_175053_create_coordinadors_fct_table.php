@@ -17,7 +17,7 @@ class CreateCoordinadorsFctTable extends Migration
             $table->id();
             $table->unsignedBigInteger('empresa_id');
             $table->string('name');
-            $table->string('nif', 9);
+            $table->string('nif', 9)->unique();
             $table->foreign('empresa_id')->references('id')->on('empreses');
             $table->timestamps();
         });
