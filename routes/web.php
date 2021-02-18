@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\email;
 use App\Http\Controllers\postForm;
-
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +30,13 @@ Route::view('/form', 'form.mainForm');
 
 Route::post('/form', [postForm::class, 'store']);
 
+Route::post('/post', [postForm::class, 'xxxx']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('contacts', 'App\Http\Controllers\ContactController');
+
+Route::apiResource('contacts', 'App\Http\Controllers\ContactController');
+
